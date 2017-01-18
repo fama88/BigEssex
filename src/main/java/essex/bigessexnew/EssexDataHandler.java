@@ -81,7 +81,6 @@ public class EssexDataHandler implements DataHandler {
     }
     
     private void handleInsertion(String content) {
-        System.out.println("fine");
         String response = getEssexData(content);
         System.out.println(response);   
     }
