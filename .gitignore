@@ -1,3 +1,5 @@
 *jar
 
 twitter4j.properties
+default.properties
+/target/

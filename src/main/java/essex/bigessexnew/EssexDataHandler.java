@@ -15,6 +15,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import essex.bigessexnew.Utils.Params;
 
 /**
  *
@@ -47,7 +48,7 @@ public class EssexDataHandler implements DataHandler {
             Logger.getLogger(EssexDataHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         String ok = "{\"jsonrpc\": \"2.0\", \"method\": \"analyzexml\", \"params\":"
-                + "{\"package\": \"http://Fama-Laptop2:8190/essexac/Get?gsl=/base_en_20161202133713\","
+                + "{\"package\": \""+Params.getProperty("langPackagePath")+"\","
                 + "\"data\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><REQUEST VERSION=\\\"13.9.0\\\">"
                 + "<DOCUMENT TYPE=\\\"PLAIN\\\" ><![CDATA["+content+"]]>"
                 + "</DOCUMENT><ANALYSIS NAME=\\\"SYNTHESIS\\\"><PARAM NAME=\\\"ENTITIES\\\" VALUE=\\\"PEOPLE\\\">"
