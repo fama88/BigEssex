@@ -1,0 +1,1 @@
+START /B mongos --config %~dp0\mongos.conf
