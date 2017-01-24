@@ -19,15 +19,21 @@ public class BigEssex {
     public static void main(String[] args) {
         parseInput(args);
         
-        
+        if (Params.getProperty("dbInitialized").equals("yes")) {
         try {
-            Process p = Runtime.getRuntime().exec("cmd /c start MongoFirstSetup.bat");
-            p.waitFor();
+            Runtime.getRuntime().exec("cmd /c start MongoConfigSetup.bat");
+            Runtime.getRuntime().exec("cmd /c start MongoShardSetup.bat");
+            Params.setProperty("dbInitialized", "yes");
         } catch (IOException ex) {
             Logger.getLogger(BigEssex.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        try {
+            Thread.sleep(20000);
         } catch (InterruptedException ex) {
             Logger.getLogger(BigEssex.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
         OplogListener ml = new OplogListener(Params.getProperty("host"), Params.getProperty("port"), Params.getProperty("listenedDB"), Params.getProperty("listenedCollection"));
         ml.listen(false, "o._id", "op");
