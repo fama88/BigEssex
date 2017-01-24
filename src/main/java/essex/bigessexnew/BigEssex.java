@@ -19,8 +19,8 @@ public class BigEssex {
         ml.listen(false, "o._id", "op");
         
         
-        /*new Thread(new TwitterStreamHandler(Params.getProperty("mongosHost"), Params.getProperty("mongosPort"),
-                Params.getProperty("shardedDB"), Params.getProperty("shardedCollection"))).start();*/
+        new Thread(new TwitterStreamHandler(Params.getProperty("mongosHost"), Params.getProperty("mongosPort"),
+                Params.getProperty("shardedDB"), Params.getProperty("shardedCollection"))).start();
     }
     
     public static void parseInput(String[] args) {
