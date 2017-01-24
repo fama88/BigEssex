@@ -6,6 +6,9 @@
 package essex.bigessexnew;
 
 import essex.bigessexnew.Utils.Params;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,6 +18,17 @@ public class BigEssex {
     
     public static void main(String[] args) {
         parseInput(args);
+        
+        
+        try {
+            Process p = Runtime.getRuntime().exec("cmd /c start MongoFirstSetup.bat");
+            p.waitFor();
+        } catch (IOException ex) {
+            Logger.getLogger(BigEssex.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(BigEssex.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         OplogListener ml = new OplogListener(Params.getProperty("host"), Params.getProperty("port"), Params.getProperty("listenedDB"), Params.getProperty("listenedCollection"));
         ml.listen(false, "o._id", "op");
         
